@@ -4,6 +4,7 @@
     const email = document.getElementById('email');
     const password = document.getElementById('password');
     const password2 = document.getElementById('password2');
+    const profilePicture = document.getElementById('profilePicture');
 
     form.addEventListener('submit', (e) => {
         e.preventDefault();
@@ -15,6 +16,7 @@
         const email_value = email.value.trim()
         const password_value = password.value.trim()
         const password2_value = password2.value.trim()
+        const profilePictureValue = profilePicture.value.trim();
    
         if(username_value === ''){
            setErrorFor(username , 'Username cannot be blank');
@@ -42,6 +44,12 @@
         } else{
             setSuccessFor(password2);
         }
+
+        if (profilePictureValue === '') {
+            setErrorFor(profilePicture, 'Please select a profile picture');
+        } else {
+            setSuccessFor(profilePicture);
+        }
    }
    
    
@@ -62,4 +70,13 @@
    function isEmail(email) {
 	return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email);
 }
+
+function displayFileName() {
+    const fileInput = document.getElementById('profilePicture');
+    const fileLabel = document.querySelector('.file-label');
+    if (fileInput.files.length > 0) {
+        fileLabel.innerHTML = `<span class="material-symbols-outlined">attach_file</span> ${fileInput.files[0].name}`;
+    }
+}
+
 });

@@ -63,6 +63,12 @@
                     <i class="error-icon"><span class="material-symbols-outlined">error</span></i>
                     <small>Error Message</small>
                 </div>
+                <div class="form-control">
+                    <label for="profilePicture" class="file-label">
+                        <span class="material-symbols-outlined">attach_file</span> Choose Profile Picture
+                    </label>
+                    <input type="file" id="profilePicture" accept="image/*" class="file-input" onchange="displayFileName()">
+                </div>
                 <button>Submit</button>
             </form>
         </div>

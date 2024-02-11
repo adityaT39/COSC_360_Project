@@ -106,3 +106,87 @@ header{
     font-size: 18px;
     margin: 0;
 }
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 450px;
+    background-color: #666a86;
+    color: white;
+    margin-top: 200px;
+}
+
+.wrapper h1 {
+    font-size: 45px;
+    text-align: center;
+}
+
+.wrapper .input-box {
+    position: relative;
+    width: 100%;
+    height: 45px;
+    margin: 40px ;
+}
+
+.input-box input {
+    transform: translatex(-19%);
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    border: 2px solid #d9c98f;
+    border-radius: 40px;
+    font-size: 16px;
+    padding: 10px 45px 10px 20px;
+    color: white;
+}
+
+.input-box input::placeholder {
+    color: white;
+}
+
+.input-box i{
+    position: absolute;
+    margin-left: 275px;
+    top: 50%;
+    transform: translateY(10%);
+}
+
+.wrapper .remember-forgot {
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 14.5px;
+    margin: -15px 0 15px;
+}
+
+.wrapper a {
+    color: #d9c98f;
+    text-decoration: none;
+}
+
+.wrapper a:hover {
+    text-decoration: underline;
+}
+
+.wrapper .button {
+    width: 100%;
+    height: 30px;;
+    background-color: #d9c98f;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    border: 2px solid #666A86;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.wrapper .register-link {
+    padding: 15px;
+    text-align: center;
+    justify-content: space-between;
+    font-size: 15px;
+}

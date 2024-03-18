@@ -1,3 +1,9 @@
+<?php
+	session_start();
+	if(!isset($_SESSION['username'])){
+	   header("Location:login.php");
+	}
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -15,6 +21,7 @@
             <nav>
                 <ul class="navigation_links">
                     <li><a href="#">About Us</a></li>
+                    <li><a href="#">Create</a></li>
                     <li><a href="#">Login</a></li>
                     <li><a href="register.html">Register</a></li>
                 </ul>

@@ -1,3 +1,7 @@
+<?php
+include("database.php");
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -6,8 +10,7 @@
         <title>Insight Globe</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="/CSS/style.css">
-        <script src="Javascript/register.js"></script>
+        <link rel="stylesheet" href="CSS/style.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
@@ -34,31 +37,31 @@
             <div class="register-head">
                 <h2>Registration</h2>
             </div>
-            <form action="" class="form" id="form">
+            <form action="register.php" method="post" class="form" id="form">
                 <div class="form-control">
                     <label>Username</label>
-                    <input type="text" placeholder="Your Username" id="username">
+                    <input type="text" name="username" placeholder="Your Username" id="username">
                     <i class="check-icon"><span class="material-symbols-outlined">check</span></i>
                     <i class="error-icon"><span class="material-symbols-outlined">error</span></i>
                     <small>Error Message</small>
                 </div>
                 <div class="form-control">
                     <label>Email</label>
-                    <input type="email" placeholder="Your Email" id="email">
+                    <input type="email" name="email" placeholder="Your Email" id="email">
                     <i class="check-icon"><span class="material-symbols-outlined">check</span></i>
                     <i class="error-icon"><span class="material-symbols-outlined">error</span></i>
                     <small>Error Message</small>
                 </div>
                 <div class="form-control">
                     <label>Password</label>
-                    <input type="password" placeholder="Password" id="password">
+                    <input type="password" name="password" placeholder="Password" id="password">
                     <i class="check-icon"><span class="material-symbols-outlined">check</span></i>
                     <i class="error-icon"><span class="material-symbols-outlined">error</span></i>
                     <small>Error Message</small>
                 </div>
                 <div class="form-control">
                     <label>Confirm Password</label>
-                    <input type="password" placeholder="Password" id="password2">
+                    <input type="password" name="password" placeholder="Password" id="password2">
                     <i class="check-icon"><span class="material-symbols-outlined">check</span></i>
                     <i class="error-icon"><span class="material-symbols-outlined">error</span></i>
                     <small>Error Message</small>
@@ -67,10 +70,27 @@
                     <label for="profilePicture" class="file-label">
                         <span class="material-symbols-outlined">attach_file</span> Choose Profile Picture
                     </label>
-                    <input type="file" id="profilePicture" accept="image/*" class="file-input" onchange="displayFileName()">
+                    <input type="file" id="profilePicture" accept="image/*" class="file-input">
                 </div>
                 <button>Submit</button>
             </form>
         </div>
     </body>
 </html>
+
+<?php
+
+    if($_SERVER["REQUEST_METHOD"] == "POST"){
+        $username = filter_input(INPUT_POST, "username", FILTER_SANITIZE_SPECIAL_CHARS);
+        $email = filter_input(INPUT_POST, "email", FILTER_SANITIZE_SPECIAL_CHARS);
+        $password = filter_input(INPUT_POST, "password", FILTER_SANITIZE_SPECIAL_CHARS);
+
+        $hash = password_hash($password , PASSWORD_DEFAULT);
+        $sql = "INSERT INTO users (user, email, password)
+                VALUES ('$username', '$email', '$hash')";
+        mysqli_query($conn, $sql);
+        echo "You are now registered";
+    }
+
+    mysqli_close($conn);
+?>

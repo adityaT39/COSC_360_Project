@@ -52,7 +52,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
    }
    
-   
    function setErrorFor(input , message){
        const formControl = input.parentElement;
        const small = formControl.querySelector('small');

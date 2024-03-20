@@ -3,29 +3,26 @@ require("database.php");
 
 session_start();
 
+include("header_index.php");
+
 if (isset($_POST['username']) && isset($_POST['password'])){
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    // Assuming $conn is the database connection
     $query = "SELECT * FROM users WHERE user='$username'";
     $result = mysqli_query($conn, $query) or die(mysqli_error($conn));
     $count = mysqli_num_rows($result);
 
     if ($count == 1){
-        // User exists, now verify password
         $row = mysqli_fetch_assoc($result);
         if (password_verify($password, $row['password'])) {
-            // Password is correct, set session and redirect to dashboard
             $_SESSION['username'] = $username;
             header("Location: dashboard.php");
-            exit(); // Make sure to exit after redirection
+            exit();
         } else {
-            // Password is incorrect
             $fmsg = "Invalid Password.";
         }
     } else {
-        // User does not exist
         $fmsg = "User does not exist.";
     }
 }
@@ -39,32 +36,15 @@ if (isset($_POST['username']) && isset($_POST['password'])){
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="CSS/style.css">
+        <link rel="stylesheet" href="CSS/index_header_style.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
         <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     </head>
     <body>
-        <header>
-            <img id="logo" src="Images/Logo.svg" alt="Logo of the website">
-            <nav>
-                <ul class="navigation_links">
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Login</a></li>
-                    <li><a href="#">Register</a></li>
-                </ul>
-            </nav>
-            <form action="">
-                <div class="search">
-                    <span class="search-icon material-symbols-outlined">search</span>
-                    <input class="search-bar" type="search" placeholder="Search">
-                </div>
-            </form>
-        </header>
-
         <div class="wrapper">
             <form method="post" action="login.php">
                 <h1>Login</h1>
 
-                <!-- Error Message Section -->
                 <?php if(isset($fmsg)) { ?>
                     <div class="error-message"><?php echo $fmsg; ?></div>
                 <?php } ?>

@@ -1,81 +1,60 @@
 <?php
 include("database.php");
+include("header_index.php");
 ?>
 
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Insight Globe</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="CSS/style.css">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    </head>
-    <body>
-        <header>
-            <a href="index.html"><img id="logo" src="Images/Logo.svg" alt="Logo of the website"></a>
-            <nav>
-                <ul class="navigation_links">
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Create</a></li>
-                    <li><a href="#">Login</a></li>
-                    <li><a href="register.html">Register</a></li>
-                </ul>
-            </nav>
-            <form action="">
-                <div class="search">
-                    <span class="search-icon material-symbols-outlined">search</span>
-                    <input class="search-bar" type="search" placeholder="Search">
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Insight Globe</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="CSS/index_header_style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="mb-0">Registration</h2>
+                    </div>
+                    <div class="card-body">
+                        <form action="register.php" method="post" enctype="multipart/form-data">
+                            <div class="mb-3">
+                                <label for="username" class="form-label">Username</label>
+                                <input type="text" class="form-control" name="username" id="username" placeholder="Your Username" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Password</label>
+                                <input type="password" class="form-control" name="password" id="password" placeholder="Password" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="password2" class="form-label">Confirm Password</label>
+                                <input type="password" class="form-control" name="confirm_password" id="password2" placeholder="Confirm Password" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="profilePicture" class="form-label">Choose Profile Picture</label>
+                                <input type="file" class="form-control" id="profilePicture" name="profile_picture" accept="image/*">
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100">Submit</button>
+                        </form>
+                    </div>
                 </div>
-            </form>
-        </header>
-        <div class="register">
-            <div class="register-head">
-                <h2>Registration</h2>
             </div>
-            <form action="register.php" method="post" class="form" id="form">
-                <div class="form-control">
-                    <label>Username</label>
-                    <input type="text" name="username" placeholder="Your Username" id="username">
-                    <i class="check-icon"><span class="material-symbols-outlined">check</span></i>
-                    <i class="error-icon"><span class="material-symbols-outlined">error</span></i>
-                    <small>Error Message</small>
-                </div>
-                <div class="form-control">
-                    <label>Email</label>
-                    <input type="email" name="email" placeholder="Your Email" id="email">
-                    <i class="check-icon"><span class="material-symbols-outlined">check</span></i>
-                    <i class="error-icon"><span class="material-symbols-outlined">error</span></i>
-                    <small>Error Message</small>
-                </div>
-                <div class="form-control">
-                    <label>Password</label>
-                    <input type="password" name="password" placeholder="Password" id="password">
-                    <i class="check-icon"><span class="material-symbols-outlined">check</span></i>
-                    <i class="error-icon"><span class="material-symbols-outlined">error</span></i>
-                    <small>Error Message</small>
-                </div>
-                <div class="form-control">
-                    <label>Confirm Password</label>
-                    <input type="password" name="password" placeholder="Password" id="password2">
-                    <i class="check-icon"><span class="material-symbols-outlined">check</span></i>
-                    <i class="error-icon"><span class="material-symbols-outlined">error</span></i>
-                    <small>Error Message</small>
-                </div>
-                <div class="form-control">
-                    <label for="profilePicture" class="file-label">
-                        <span class="material-symbols-outlined">attach_file</span> Choose Profile Picture
-                    </label>
-                    <input type="file" id="profilePicture" accept="image/*" class="file-input">
-                </div>
-                <button>Submit</button>
-            </form>
         </div>
-    </body>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
 </html>
 
 <?php

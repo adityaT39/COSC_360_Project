@@ -58,7 +58,8 @@
 
             <div class="older-posts-section">
                 <div class="categories-area">
-                    <h2>Posts By Category:</h2>
+                    <h3>POSTS BY CATEGORY:</h3>
+                    <br>
                     <button>Health & Wellness</button>
                     <button>Fitness & Exercise</button>
                     <button>Personal Development</button>
@@ -73,8 +74,9 @@
 
                 <div class="older-posts-area">
                     <h3>OLDER POSTS:</h3>
+                    <br>
                     <?php
-                        $older_posts_query = "SELECT * FROM posts WHERE id ORDER BY created_at DESC";
+                        $older_posts_query = "SELECT * FROM posts WHERE id ORDER BY created_at DESC ";
                         $older_posts_stmt = $conn->prepare($older_posts_query);
                         $older_posts_stmt->execute();
                         $older_posts_result = $older_posts_stmt->get_result();

@@ -6,8 +6,7 @@
     $stmt->execute();
     $result = $stmt->get_result();
 ?>
-include("header_index.php");
-?>
+
 <!DOCTYPE html>
 <html>
     <head>

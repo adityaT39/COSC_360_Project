@@ -58,8 +58,17 @@
 
             <div class="older-posts-section">
                 <div class="categories-area">
-                    <button>Food</button>
-                    <button>Health</button>
+                    <h2>Posts By Category:</h2>
+                    <button>Health & Wellness</button>
+                    <button>Fitness & Exercise</button>
+                    <button>Personal Development</button>
+                    <button>Finance & Investing</button>
+                    <button>Travel & Destinations</button>
+                    <button>Video Games & Gaming Culture</button>
+                    <button>Photography & Videography</button>
+                    <button>Music & Concerts</button>
+                    <button>Art & Design</button>
+                    <button>Technology & Gadgets</button>
                 </div>
 
                 <div class="older-posts-area">

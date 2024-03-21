@@ -65,7 +65,7 @@
                 <div class="older-posts-area">
                     <h3>OLDER POSTS:</h3>
                     <?php
-                        $older_posts_query = "SELECT * FROM posts WHERE id NOT IN (SELECT id FROM posts ORDER BY created_at DESC LIMIT 3) ORDER BY created_at DESC";
+                        $older_posts_query = "SELECT * FROM posts WHERE id ORDER BY created_at DESC";
                         $older_posts_stmt = $conn->prepare($older_posts_query);
                         $older_posts_stmt->execute();
                         $older_posts_result = $older_posts_stmt->get_result();

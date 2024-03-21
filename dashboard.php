@@ -4,7 +4,7 @@
        header("Location:login.php");
        exit();
     }
-    include("header_index.php");
+    include("header.php");
     include("database.php");
     $query = "SELECT * FROM posts ORDER BY created_at DESC LIMIT 3";
     $stmt = $conn->prepare($query);
@@ -64,14 +64,22 @@
 
             <div class="older-posts-section">
                 <div class="categories-area">
-                    <button>Food</button>
-                    <button>Health</button>
+                    <button>Health & Wellness</button>
+                    <button>Fitness & Exercise</button>
+                    <button>Personal Development</button>
+                    <button>Finance & Investing</button>
+                    <button>Travel & Destinations</button>
+                    <button>Video Games & Gaming Culture</button>
+                    <button>Photography & Videography</button>
+                    <button>Music & Concerts</button>
+                    <button>Art & Design</button>
+                    <button>Technology & Gadgets</button>
                 </div>
 
                 <div class="older-posts-area">
                     <h3>OLDER POSTS:</h3>
                     <?php
-                        $older_posts_query = "SELECT * FROM posts WHERE id NOT IN (SELECT id FROM posts ORDER BY created_at DESC LIMIT 3) ORDER BY created_at DESC";
+                        $older_posts_query = "SELECT * FROM posts WHERE id ORDER BY created_at DESC";
                         $older_posts_stmt = $conn->prepare($older_posts_query);
                         $older_posts_stmt->execute();
                         $older_posts_result = $older_posts_stmt->get_result();

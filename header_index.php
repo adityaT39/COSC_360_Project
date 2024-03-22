@@ -21,7 +21,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <a class="nav-link nav-link-custom" href="aboutus.php">About Us</a>
+                    <a class="nav-link nav-link-custom" href="about_us_index.php">About Us</a>
                     <a class="nav-link nav-link-custom" href="register.php">Register</a>
                     <a class="nav-link nav-link-custom" href="login.php">Login</a>
                 </div>

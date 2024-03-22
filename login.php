@@ -36,7 +36,6 @@ if (isset($_POST['username']) && isset($_POST['password'])){
     <meta name="description" content="Login to your account">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="CSS/style.css">
-    <link rel="stylesheet" href="CSS/index_header_style.css">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -83,8 +82,10 @@ if (isset($_POST['username']) && isset($_POST['password'])){
             </div>
         </div>
     </div>
-    
-    <!-- Bootstrap JS files -->
+    <?php
+        include("footer.php");
+    ?>
+    <link rel="stylesheet" href="CSS/index_header_style.css">
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>

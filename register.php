@@ -12,7 +12,6 @@ include("header_index.php");
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="CSS/style.css">
-    <link rel="stylesheet" href="CSS/index_header_style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
@@ -52,7 +51,11 @@ include("header_index.php");
             </div>
         </div>
     </div>
+    <?php
+        include("footer.php");
+    ?>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <link rel="stylesheet" href="CSS/index_header_style.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

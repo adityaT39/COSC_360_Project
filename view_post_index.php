@@ -1,10 +1,5 @@
 <?php
-session_start();
-if (!isset($_SESSION['username'])) {
-    header("Location:login.php");
-    exit();
-}
-include("header.php");
+include("header_index.php");
 include("database.php");
 
 // Check if the post ID is present
@@ -26,20 +21,6 @@ $post = $result->fetch_assoc();
 
 if (!$post) {
     echo "Post not found.";
-    exit();
-}
-
-// Handle comment submission
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit_comment'])) {
-    $comment_text = $conn->real_escape_string($_POST['comment']);
-    $username = $_SESSION['username'];
-
-    $comment_stmt = $conn->prepare("INSERT INTO comments (post_id, username, comment) VALUES (?, ?, ?)");
-    $comment_stmt->bind_param("iss", $post_id, $username, $comment_text);
-    $comment_stmt->execute();
-    $comment_stmt->close();
-    // Redirect back to the same page to display the new comment and clear form data
-    header("Location: view_post.php?id=$post_id");
     exit();
 }
 
@@ -72,19 +53,6 @@ $comments_result = $comments_stmt->get_result();
             <p class="card-text"><small class="text-muted">Category: <?php echo htmlspecialchars($post['category']); ?></small></p>
         </div>
     </div>
-
-    <!-- Comment Submission Form -->
-    <div class="mt-4">
-        <form method="post" action="">
-            <input type="hidden" name="post_id" value="<?php echo $post_id; ?>">
-            <div class="mb-3">
-                <label for="comment" class="form-label">Leave a comment:</label>
-                <textarea class="form-control" id="comment" name="comment" rows="3" required></textarea>
-            </div>
-            <button type="submit" name="submit_comment" class="btn btn-primary">Post Comment</button>
-        </form>
-    </div>
-
     <!-- Comments Display -->
     <div class="mt-4">
         <h3>Comments:</h3>

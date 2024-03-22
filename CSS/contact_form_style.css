@@ -1,0 +1,50 @@
+
+body {
+    background: #f5f5dc;
+}
+
+.contact form {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+}
+
+.contact form h2 {
+    color: #333; 
+    font-weight: bold;
+}
+
+.contact form .form-control {
+    background: #d3d3d3;
+    border: none;
+    margin-bottom: 1rem;
+}
+
+.contact form .btn {
+    background: #483D8B;
+    color: white;
+}
+
+ffooter {
+    background: #333;
+    color: #fff;
+    border-top: 1px solid #474747;
+}
+
+footer a.text-light {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+footer a.text-light:hover {
+    color: #fff;
+    text-decoration: none;
+}
+
+footer h5 {
+    margin-bottom: 20px;
+}
+
+footer p {
+    font-size: 0.9rem;
+}
+
+

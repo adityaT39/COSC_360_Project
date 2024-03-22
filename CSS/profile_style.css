@@ -1,0 +1,41 @@
+body {
+    background-color: #fffbe7;
+}
+.profile-container {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    margin-top: 20px;
+    padding: 20px;
+}
+.username {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+}
+.info-box, .activity-box {
+    background-color: #f8f9fa;
+    border: 1px solid #ffd700;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+.info-box h3, .activity-box h3 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+.info-box p, .activity-box p {
+    color: #555;
+    font-size: 1rem;
+    margin-bottom: 5px;
+}
+.info-box .btn, .activity-box .btn {
+    background-color: #ffd700;
+    border-color: #ffd700;
+    color: #333;
+}
+.info-box .btn:hover, .activity-box .btn:hover {
+    background-color: #e6c200;
+    border-color: #e6c200;
+}

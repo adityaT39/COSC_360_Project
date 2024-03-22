@@ -36,7 +36,7 @@
                             <h3><?php echo htmlspecialchars($row['title']); ?></h3>
                             <p><?php echo nl2br(htmlspecialchars(substr($row['content'], 0, 100))); ?>...</p>
                             <p class="text-muted">Posted by <?php echo htmlspecialchars($row['user']); ?></p>
-                            <a href="view_post.php?id=<?php echo $row['id']; ?>" class="stretched-link">Read More</a>
+                            <a href="view_post_index.php?id=<?php echo $row['id']; ?>" class="stretched-link">Read More</a>
                         </div>
                     </div>
                     <?php endwhile; ?>

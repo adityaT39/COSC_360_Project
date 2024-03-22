@@ -103,14 +103,8 @@
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="CSS/index_header_style.css">
     </head>
     <body>
-        <div class="banner">
-            <div class="slogan">
-                <h1>Your Slogan Goes Here</h1>
-                <p>A brief description or additional information</p>
-            </div>
         </div>
     </body>
 </html>

@@ -42,7 +42,9 @@
             </div>
         </div>
     </div>
-
+    <?php
+        include("footer.php");
+    ?>
     <footer class="bg-dark text-light py-4">
         <div class="container">
             <div class="row">

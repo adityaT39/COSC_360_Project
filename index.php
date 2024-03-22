@@ -1,6 +1,12 @@
 <?php
-include("header_index.php");
+    include("header_index.php");
+    include("database.php");
+    $query = "SELECT * FROM posts ORDER BY created_at DESC LIMIT 3";
+    $stmt = $conn->prepare($query);
+    $stmt->execute();
+    $result = $stmt->get_result();
 ?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -10,22 +16,17 @@ include("header_index.php");
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="CSS/index_homepage.css">
     <link rel="stylesheet" href="CSS/index_header_style.css">
-<<<<<<< Updated upstream
-=======
     <link rel="stylesheet" href="CSS/contact_form_style.css">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
-
->>>>>>> Stashed changes
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
     </head>
     <body>
-        <div class="banner">
-            <div class="slogan">
-                <h1>Your Slogan Goes Here</h1>
-                <p>A brief description or additional information</p>
+        <main>
+            <div class="feature-image-area">
+                <img src="Images/imageBackground.png" alt="Feature Image" style="width: 100%; height: 400px;">
             </div>
-<<<<<<< Updated upstream
-=======
             <div class="container mt-5">
                 <h2 class="text-center mb-4">Latest Posts</h2>
                 <div class="row">
@@ -101,9 +102,6 @@ include("header_index.php");
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    </head>
-    <body>
->>>>>>> Stashed changes
         </div>
     </body>
 </html>

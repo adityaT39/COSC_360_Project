@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="CSS/style.css">
     <link rel="stylesheet" href="CSS/header_style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css" rel="stylesheet">
 </head>
 <body>
     <header>
@@ -29,6 +30,7 @@
                             <a class="nav-link nav-link-custom" href="view_posts.php">Your Posts</a>
                         </li>
                     </ul>
+                    <a href="profile.php" class="me-2" role="button"><i class="bi bi-person-fill"></i></a>
                     <span class="navbar-text me-3">
                         Welcome, <?= htmlspecialchars($_SESSION['username']); ?>
                     </span>

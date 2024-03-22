@@ -19,7 +19,7 @@
     <div class="container mt-5">
         <div class="row">
             <div class="col-md-8 offset-md-2">
-                <form class="bg-light p-4">
+                <form action="contact.php" method="post" class="bg-light p-4">
                     <h2 class="text-center mb-4">Contact Us</h2>
                     <div class="form-group">
                         <label for="name">Name:</label>
@@ -30,8 +30,8 @@
                         <input type="email" class="form-control" id="email" name="email" required>
                     </div>
                     <div class="form-group">
-                        <label for="inquiry">Inquiry Subject:</label> 
-                        <textarea class="form-control" id="inquiry" name="inquiry" rows="3" required></textarea> 
+                        <label for="subject">Inquiry Subject:</label> 
+                        <textarea class="form-control" id="subject" name="subject" rows="3" required></textarea> 
                     </div>
                     <div class="form-group">
                         <label for="message">Message:</label>
@@ -42,6 +42,7 @@
             </div>
         </div>
     </div>
+
     <footer class="bg-dark text-light py-4">
         <div class="container">
             <div class="row">
@@ -63,4 +64,26 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
+
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $name = $conn->real_escape_string($_POST['name']);
+    $email = $conn->real_escape_string($_POST['email']);
+    $subject = $conn->real_escape_string($_POST['subject']);
+    $message = $conn->real_escape_string($_POST['message']);
+
+    $sql = "INSERT INTO contact (name, email, subject, message) VALUES (?, ?, ?, ?)";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("ssss", $name, $email, $subject, $message);
+
+    if ($stmt->execute()) {
+        echo "Thank you for contacting us! Your message has been sent.";
+    } else {
+        echo "Error: " . $stmt->error;
+    }
+    
+    $stmt->close();
+    $conn->close();
+}
+?>
 

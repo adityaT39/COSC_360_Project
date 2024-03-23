@@ -1,17 +1,15 @@
 <?php
 include("header_index.php");
 include("database.php");
-
-// Check if the post ID is present
 if (!isset($_GET['id']) && !isset($_POST['post_id'])) {
     echo "No post specified.";
     exit();
 }
 
-// Define post_id depending on the method of the request
+
 $post_id = $_GET['id'] ?? $_POST['post_id'] ?? null;
 
-// Retrieve post details
+
 $query = "SELECT * FROM posts WHERE id = ?";
 $stmt = $conn->prepare($query);
 $stmt->bind_param("i", $post_id);
@@ -24,7 +22,6 @@ if (!$post) {
     exit();
 }
 
-// Retrieve existing comments for the post
 $comments_query = "SELECT * FROM comments WHERE post_id = ? ORDER BY created_at DESC";
 $comments_stmt = $conn->prepare($comments_query);
 $comments_stmt->bind_param("i", $post_id);
@@ -53,7 +50,7 @@ $comments_result = $comments_stmt->get_result();
             <p class="card-text"><small class="text-muted">Category: <?php echo htmlspecialchars($post['category']); ?></small></p>
         </div>
     </div>
-    <!-- Comments Display -->
+ 
     <div class="mt-4">
         <h3>Comments:</h3>
         <?php while ($comment = $comments_result->fetch_assoc()): ?>
@@ -75,7 +72,7 @@ $comments_result = $comments_stmt->get_result();
     </div>
 </div>
 
-<?php include("footer.php"); ?>
+<?php include("footer_index.php"); ?>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>

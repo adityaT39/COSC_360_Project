@@ -1,10 +1,5 @@
 <?php
-    session_start();
-    if(!isset($_SESSION['username'])){
-       header("Location:login.php");
-       exit();
-    }
-    include("header.php");
+    include("header_index.php");
     include("database.php");
 ?>
 <!DOCTYPE html>
@@ -50,10 +45,22 @@
     <?php
         include("footer.php");
     ?>
-<<<<<<< Updated upstream
-=======
-    <link rel="stylesheet" href="CSS/index_header_style.css">
->>>>>>> Stashed changes
+    <footer class="bg-dark text-light py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>About Insight Globe</h5>
+                    <p>Insight Globe is dedicated to providing the best information and insights to our visitors.</p>
+                </div>
+                <div class="col-md-6 text-md-right">
+                    <h5><a href="contact.php" class="text-light">Contact</a></h5>
+                </div>
+            </div>
+            <div class="text-center py-3">
+                <p class="mb-0">&copy; 2024 Insight Globe. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

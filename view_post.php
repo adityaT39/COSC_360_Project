@@ -7,16 +7,14 @@ if (!isset($_SESSION['username'])) {
 include("header.php");
 include("database.php");
 
-// Check if the post ID is present
 if (!isset($_GET['id']) && !isset($_POST['post_id'])) {
     echo "No post specified.";
     exit();
 }
 
-// Define post_id depending on the method of the request
 $post_id = $_GET['id'] ?? $_POST['post_id'] ?? null;
 
-// Retrieve post details
+
 $query = "SELECT * FROM posts WHERE id = ?";
 $stmt = $conn->prepare($query);
 $stmt->bind_param("i", $post_id);
@@ -29,7 +27,6 @@ if (!$post) {
     exit();
 }
 
-// Handle comment submission
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit_comment'])) {
     $comment_text = $conn->real_escape_string($_POST['comment']);
     $username = $_SESSION['username'];
@@ -38,12 +35,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit_comment'])) {
     $comment_stmt->bind_param("iss", $post_id, $username, $comment_text);
     $comment_stmt->execute();
     $comment_stmt->close();
-    // Redirect back to the same page to display the new comment and clear form data
     header("Location: view_post.php?id=$post_id");
     exit();
 }
 
-// Retrieve existing comments for the post
 $comments_query = "SELECT * FROM comments WHERE post_id = ? ORDER BY created_at DESC";
 $comments_stmt = $conn->prepare($comments_query);
 $comments_stmt->bind_param("i", $post_id);
@@ -72,8 +67,6 @@ $comments_result = $comments_stmt->get_result();
             <p class="card-text"><small class="text-muted">Category: <?php echo htmlspecialchars($post['category']); ?></small></p>
         </div>
     </div>
-
-    <!-- Comment Submission Form -->
     <div class="mt-4">
         <form method="post" action="">
             <input type="hidden" name="post_id" value="<?php echo $post_id; ?>">
@@ -85,7 +78,6 @@ $comments_result = $comments_stmt->get_result();
         </form>
     </div>
 
-    <!-- Comments Display -->
     <div class="mt-4">
         <h3>Comments:</h3>
         <?php while ($comment = $comments_result->fetch_assoc()): ?>

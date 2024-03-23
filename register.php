@@ -52,7 +52,7 @@ include("header_index.php");
         </div>
     </div>
     <?php
-        include("footer.php");
+        include("footer_index.php");
     ?>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <link rel="stylesheet" href="CSS/index_header_style.css">

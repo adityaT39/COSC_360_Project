@@ -31,10 +31,6 @@ nav {
     font-size: 1.5rem;
 }
 
-main {
-
-}
-
 .hot-topics {
     display: flex;
     justify-content: space-between;
@@ -95,7 +91,6 @@ footer {
 }
 
 .feature-image-area {
-    background-image: url('Images/imageBackground.png'); 
     background-position: center;
     margin-bottom: 0;
     margin-left: 0;

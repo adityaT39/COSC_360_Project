@@ -1,12 +1,3 @@
-<?php
-    session_start();
-
-    if(!isset($_SESSION['username'])){
-        header("Location: login.php");
-        exit();
-    }
-
-?>
 
 <?php
     include("header.php");
@@ -14,14 +5,6 @@
 ?>
 
 <?php
-    $username = $_SESSION['username'];
-    $query = "SELECT * FROM posts WHERE user = ? ORDER BY created_at DESC";
-    $stmt = $conn->prepare($query);
-    $stmt->bind_param("s", $username);
-    $stmt->execute();
-    $result = $stmt->get_result();
-
-
     $category = '';
     if (isset($_GET['category'])) {
         $category = $_GET['category'];
@@ -69,7 +52,7 @@
 
         
         <?php
-            include("footer.php");
+            include("footer_index.php");
         ?>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     </body>

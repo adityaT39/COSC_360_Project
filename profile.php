@@ -52,7 +52,7 @@
                 <p>Email: <?php echo htmlspecialchars($user['email']); ?></p>
                 <p>Registration Date: <?php echo htmlspecialchars($user['reg_date']); ?></p>
                 <a href="change_username.php" class="btn btn-primary">Change Username</a>
-                <button class="btn">Change Password</button>
+                <a href="change_password.php" class="btn btn-primary">Change Password</a>
             </div>
             <div class="activity-box">
                 <h3>User Activity:</h3>

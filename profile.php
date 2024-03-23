@@ -51,7 +51,7 @@
                 <p>Username: <?php echo htmlspecialchars($user['user']); ?></p>
                 <p>Email: <?php echo htmlspecialchars($user['email']); ?></p>
                 <p>Registration Date: <?php echo htmlspecialchars($user['reg_date']); ?></p>
-                <button class="btn">Change Username</button>
+                <a href="change_username.php" class="btn btn-primary">Change Username</a>
                 <button class="btn">Change Password</button>
             </div>
             <div class="activity-box">

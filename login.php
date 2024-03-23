@@ -83,7 +83,7 @@ if (isset($_POST['username']) && isset($_POST['password'])){
         </div>
     </div>
     <?php
-        include("footer.php");
+        include("footer_index.php");
     ?>
     <link rel="stylesheet" href="CSS/index_header_style.css">
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

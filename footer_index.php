@@ -1,11 +1,3 @@
-<?php
-    session_start();
-    if(!isset($_SESSION['username'])){
-       header("Location:login.php");
-       exit();
-    }
-?>
-
 <footer class="bg-dark text-light py-4">
         <div class="container">
             <div class="row">
@@ -14,7 +6,7 @@
                     <p>Insight Globe is dedicated to providing the best information and insights to our visitors.</p>
                 </div>
                 <div class="col-md-6 text-md-right">
-                    <h5><a href="contact.php" class="text-light">Contact</a></h5>
+                    <h5><a href="contact_index.php" class="text-light">Contact</a></h5>
                 </div>
             </div>
             <div class="text-center py-3">

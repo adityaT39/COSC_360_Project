@@ -88,8 +88,9 @@
                             while ($post = $older_posts_result->fetch_assoc()):
                     ?>
                     <div class="older-post">
+                        <h3 class="post-title"><?php echo htmlspecialchars($post['title']); ?></h3>
                         <p><?php echo htmlspecialchars(substr($post['content'], 0, 100)); ?>...</p>
-                        <button>READ MORE</button>
+                        <a href="view_post.php?id=<?php echo $post['id']; ?>" class="read-more-older">READ MORE</a>
                         <p class="posted-by">POSTED BY: <?php echo htmlspecialchars($post['user']); ?></p>
                     </div>
                     <?php

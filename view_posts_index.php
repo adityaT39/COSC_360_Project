@@ -42,7 +42,7 @@
                         <h2><?php echo htmlspecialchars($row['title']); ?></h2>
                         <p><?php echo nl2br(htmlspecialchars($row['content'])); ?></p>
                         <p>Category: <?php echo htmlspecialchars($row['category']); ?></p>
-                        <a href="view_post.php?id=<?php echo $row['id']; ?>">Read More</a>
+                        <a href="view_post_index.php?id=<?php echo $row['id']; ?>">Read More</a>
                     </div>
                 <?php endwhile; ?>
             <?php else: ?>

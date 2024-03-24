@@ -1,10 +1,6 @@
 <?php
     session_start();
-    if(!isset($_SESSION['username'])){
-       header("Location:login.php");
-       exit();
-    }
-    include("header.php");
+    include("header_index.php");
     include 'database.php'; 
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['selectedPosts'])) {
@@ -79,7 +75,7 @@
 </div>
 
 <?php
-    include("footer.php");
+    include("footer_index.php");
 ?>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>

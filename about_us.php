@@ -27,11 +27,11 @@
             </div>
             <div class="col-md-4">
                 <h2>João Bolsonaro</h2>
-                <p>[Description of creator 2]</p>
+                <p>Brazilian Management third-year student with a minor in computer science looking to bridge the gap between the technical development and effective business strategies. Striving to make a positive change through technology and its endless possibilities.</p>
             </div>
             <div class="col-md-4">
                 <h2>Silvio Carvalho</h2>
-                <p>Economics major fourth year-student with experience in financial planning and analysis, applying excel to financial models and financial forecasting, and technical skills in Java, Python, SQL, and R studio. Undertook this website as a project and for applying CSS, PHP, and HTML skills.
+                <p>Economics major fourth-year student with experience in financial planning and analysis, applying excel to financial models and financial forecasting, and technical skills in Java, Python, SQL, and R studio. Undertook this website as a project and for applying CSS, PHP, and HTML skills.
 </p>
             </div>
         </div>

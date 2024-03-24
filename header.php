@@ -18,6 +18,9 @@
                 <a class="navbar-brand" href="dashboard.php">
                     <img src="Images/Logo.svg" alt="Logo" style="max-width: 150px; max-height: 100px;">
                 </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
@@ -56,5 +59,3 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 </body>
 </html>
-
-

@@ -13,7 +13,7 @@ $(document).ready(function() {
                     var postHTML = '<div class="col-md-4 mb-3">' +
                                     '<div class="hot-topic p-3">' +
                                         '<h3>' + post.title + '</h3>' +
-                                        '<p>' + post.content.substring(0, 100) + '...</p>' +
+                                        '<p>' + post.content.substring(0, 20) + '...</p>' +
                                         '<p class="text-muted">Posted by ' + post.user + '</p>' +
                                         '<a href="view_post_index.php?id=' + post.id + '" class="stretched-link">Read More</a>' +
                                     '</div>' +

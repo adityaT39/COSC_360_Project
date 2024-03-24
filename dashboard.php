@@ -6,6 +6,7 @@
     }
     include("header.php");
     include("database.php");
+    
     $query = "SELECT * FROM posts ORDER BY created_at DESC LIMIT 3";
     $stmt = $conn->prepare($query);
     $stmt->execute();
@@ -52,25 +53,25 @@
                 <div class="categories-area">
                     <h3>POSTS BY CATEGORY:</h3>
                     <br>
-                    <a href="view_posts.php?category=<?php echo urlencode('Health & Wellness'); ?>" class="btn btn-primary">Health & Wellness</a>
+                    <a href="category_results.php?category=<?php echo urlencode('Health & Wellness'); ?>" class="btn btn-primary">Health & Wellness</a>
                     <br>
-                    <a href="view_posts.php?category=<?php echo urlencode('Fitness & Exercise'); ?>" class="btn btn-primary">Fitness & Exercise</a>
+                    <a href="category_results.php?category=<?php echo urlencode('Fitness & Exercise'); ?>" class="btn btn-primary">Fitness & Exercise</a>
                     <br>
-                    <a href="view_posts.php?category=<?php echo urlencode('Finance & Investing'); ?>" class="btn btn-primary">Finance & Investing</a>
+                    <a href="category_results.php?category=<?php echo urlencode('Finance & Investing'); ?>" class="btn btn-primary">Finance & Investing</a>
                     <br>
-                    <a href="view_posts.php?category=Personal Development" class="btn btn-primary">Personal Development</a>
+                    <a href="category_results.php?category=Personal Development" class="btn btn-primary">Personal Development</a>
                     <br>
-                    <a href="view_posts.php?category=<?php echo urlencode('Travel & Destinations'); ?>" class="btn btn-primary">Travel & Destinations</a>
+                    <a href="category_results.php?category=<?php echo urlencode('Travel & Destinations'); ?>" class="btn btn-primary">Travel & Destinations</a>
                     <br>
-                    <a href="view_posts.php?category=<?php echo urlencode('Video Games & Gaming Culture'); ?>" class="btn btn-primary">Video Games & Gaming Culture</a>
+                    <a href="category_results.php?category=<?php echo urlencode('Video Games & Gaming Culture'); ?>" class="btn btn-primary">Video Games & Gaming Culture</a>
                     <br>
-                    <a href="view_posts.php?category=<?php echo urlencode('Photography & Videography'); ?>" class="btn btn-primary">Photography & Videography</a>
+                    <a href="category_results.php?category=<?php echo urlencode('Photography & Videography'); ?>" class="btn btn-primary">Photography & Videography</a>
                     <br>
-                    <a href="view_posts.php?category=<?php echo urlencode('Music & Concerts'); ?>" class="btn btn-primary">Music & Concerts</a>
+                    <a href="category_results.php?category=<?php echo urlencode('Music & Concerts'); ?>" class="btn btn-primary">Music & Concerts</a>
                     <br>
-                    <a href="view_posts.php?category=<?php echo urlencode('Art & Design'); ?>" class="btn btn-primary">Art & Design</a>
+                    <a href="category_results.php?category=<?php echo urlencode('Art & Design'); ?>" class="btn btn-primary">Art & Design</a>
                     <br>
-                    <a href="view_posts.php?category=<?php echo urlencode('Technology & Gadgets'); ?>" class="btn btn-primary">Technology & Gadgets</a>
+                    <a href="category_results.php?category=<?php echo urlencode('Technology & Gadgets'); ?>" class="btn btn-primary">Technology & Gadgets</a>
                 </div>
 
                 <div class="older-posts-area">

@@ -24,6 +24,7 @@
                     <a class="nav-link nav-link-custom" href="about_us_index.php">About Us</a>
                     <a class="nav-link nav-link-custom" href="register.php">Register</a>
                     <a class="nav-link nav-link-custom" href="login.php">Login</a>
+                    <a class="nav-link nav-link-custom btn btn-warning" href="admin.php">Admin</a>
                 </div>
                 <form class="d-flex form-inline">
                     <input class="form-control search-bar-custom" type="search" placeholder="Search" aria-label="Search">

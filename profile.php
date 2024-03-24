@@ -25,6 +25,14 @@
     $postStmt->execute();
     $postResult = $postStmt->get_result();
     $latestPostTitle = $postResult->num_rows > 0 ? $postResult->fetch_assoc()['title'] : 'No posts found.';
+   
+    $commentQuery = "SELECT comment FROM comments WHERE username = ? ORDER BY created_at DESC LIMIT 1";
+    $commentStmt = $conn->prepare($commentQuery);
+    $commentStmt->bind_param("s", $username);
+    $commentStmt->execute();
+    $commentResult = $commentStmt->get_result();
+    $latestComment = $commentResult->num_rows > 0 ? $commentResult->fetch_assoc()['comment'] : 'No comments found.';
+   
     $stmt->close();
     $conn->close();
     
@@ -57,7 +65,7 @@
             <div class="activity-box">
                 <h3>User Activity:</h3>
                 <p>Latest Post Title: <?php echo htmlspecialchars($latestPostTitle); ?></p>
-                <p>Previous Posts / Replies:</p>
+                <p>Latest Comment: <?php echo htmlspecialchars($latestComment); ?></p>
             </div>
         </div>
     </div>

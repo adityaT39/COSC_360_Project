@@ -29,6 +29,9 @@
                         <li class="nav-item">
                             <a class="nav-link nav-link-custom" href="view_posts.php">Your Posts</a>
                         </li>
+                        <li class="nav-item">
+                        <a class="nav-link nav-link-custom btn btn-warning" href="admin.php">Admin</a>
+                        </li>
                     </ul>
                     <a href="profile.php" class="me-2" role="button"><i class="bi bi-person-fill"></i></a>
                     <span class="navbar-text me-3">

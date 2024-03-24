@@ -26,6 +26,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['newUsername'])) {
         $postStmt->execute();
         $postStmt->close();
 
+        $commentQuery = "UPDATE comments SET username = ? WHERE username = ?";
+        $commentStmt = $conn->prepare($commentQuery);
+        $commentStmt->bind_param("ss", $newUsername, $currentUsername);
+        $commentStmt->execute();
+        $commentStmt->close();
+
         $conn->commit();
 
         $_SESSION['username'] = $newUsername;

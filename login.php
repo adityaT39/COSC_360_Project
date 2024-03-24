@@ -77,7 +77,7 @@ if (isset($_POST['username']) && isset($_POST['password'])){
                     </div>
                 </form>
                 <div class="text-center mt-3">
-                    <span>Don't have an account? </span><a href="register.html">Register Here</a>
+                    <span>Don't have an account? </span><a href="register.php">Register Here</a>
                 </div>
             </div>
         </div>

@@ -1,43 +1,33 @@
 <?php
     session_start();
-
     if(!isset($_SESSION['username'])){
         header("Location: login.php");
         exit();
     }
-
 ?>
 
 <?php
     include("header.php");
     include("database.php");
-?>
 
-<?php
     $username = $_SESSION['username'];
-    $query = "SELECT * FROM posts WHERE user = ? ORDER BY created_at DESC";
-    $stmt = $conn->prepare($query);
-    $stmt->bind_param("s", $username);
-    $stmt->execute();
-    $result = $stmt->get_result();
+    $category = isset($_GET['category']) ? $_GET['category'] : '';
 
-
-    $category = '';
-    if (isset($_GET['category'])) {
-        $category = $_GET['category'];
-    }
-
-    if ($category) {
-        $query = "SELECT * FROM posts WHERE category = ? ORDER BY created_at DESC";
+    // If a category is set, fetch posts by both user and category. Otherwise, fetch only by user.
+    if (!empty($category)) {
+        $query = "SELECT * FROM posts WHERE user = ? AND category = ? ORDER BY created_at DESC";
         $stmt = $conn->prepare($query);
-        $stmt->bind_param("s", $category);
+        $stmt->bind_param("ss", $username, $category);
     } else {
-        $query = "SELECT * FROM posts ORDER BY created_at DESC";
+        $query = "SELECT * FROM posts WHERE user = ? ORDER BY created_at DESC";
         $stmt = $conn->prepare($query);
+        $stmt->bind_param("s", $username);
     }
+
     $stmt->execute();
     $result = $stmt->get_result();
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">

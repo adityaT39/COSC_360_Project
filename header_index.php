@@ -26,10 +26,10 @@
                     <a class="nav-link nav-link-custom" href="login.php">Login</a>
                     <a class="nav-link nav-link-custom btn btn-warning" href="admin.php">Admin</a>
                 </div>
-                <form class="d-flex form-inline">
-                    <input class="form-control search-bar-custom" type="search" placeholder="Search" aria-label="Search">
+                <form class="d-flex align-items-center" id="search-form" action="search_results.php" method="get">
+                    <input class="form-control me-2 search-bar-custom" name="query" type="search" placeholder="Search" aria-label="Search">
                     <button class="btn search-button-custom" type="submit">
-                        <span class="material-icons">search</span>
+                        <span class="material-icons">Search</span>
                     </button>
                 </form>
             </div>

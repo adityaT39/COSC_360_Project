@@ -1,0 +1,21 @@
+body {
+    background-color: #f8f9fa;
+}
+
+.container {
+    max-width: 1200px;
+}
+
+.card-title {
+    color: #6666a8;
+}
+
+.card-text {
+    font-size: 0.9rem;
+    color: black;
+}
+
+.btn-primary {
+    background-color: #B2C9AB;
+    color: #6666a8;
+}

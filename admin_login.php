@@ -6,8 +6,6 @@
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $username = $_POST['username'];
         $password = $_POST['password'];
-
-        // Example of checking credentials (Ensure to use password hashing in a real application)
         $query = "SELECT * FROM admin WHERE username = ?";
         $stmt = $conn->prepare($query);
         $stmt->bind_param("s", $username);
@@ -16,16 +14,13 @@
         if ($result->num_rows > 0) {
             $admin = $result->fetch_assoc();
             if ($password == $admin['password']) {
-                // Correct credentials
                 $_SESSION['admin_logged_in'] = true;
                 header("Location: admin_index.php");
                 exit();
             } else {
-                // Wrong password
                 $login_error = "Invalid username or password. Debug: Entered password is {$password}, DB password is {$admin['password']}";
             }
         } else {
-            // No user found
             $login_error = "Invalid username or password.";
         }
     }

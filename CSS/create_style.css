@@ -1,29 +1,11 @@
-.container {
-    background-color: #fff;
-    padding: 2rem;
-    margin-top: 1rem;
-    border-radius: 0.25rem; 
-  }
+#make-post {
+    padding: 13px;
+    color: white;
+    background-color: #6666a8;
+    border-radius: 100px;
+    border-color: #B2C9AB;
+}
 
-.btn-post {
-    background-color: #007bff;
-    border: none;
-    padding: 0.5rem 1rem;
-    color: #fff;
-    border-radius: 0.25rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-
-.btn-post:hover {
-    background-color: #0056b3;
-  }
-
-footer {
-    background-color: #343a40;
-    color: #f8f9fa;
-    padding: 1rem;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-  }
+#title-post {
+    color: black;
+}

@@ -24,7 +24,7 @@
     <body>
         <main>
             <div class="feature-image-area">
-                <img src="Images/imageBackground.png" alt="Feature Image" style="width: 100%; height: 400px;">
+                <img src="Images/imageBackground.jpg" alt="Feature Image" style="width: 100%; height: 400px;">
             </div>
             <div class="container mt-5">
                 <h2 class="text-center mb-4">Latest Posts</h2>

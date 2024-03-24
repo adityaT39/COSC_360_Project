@@ -12,31 +12,30 @@
     transition: color 0.3s ease; 
 }
 .nav-link-custom:hover {
-    color: orange;
+    color: #6668a6;
 }
+
 .search-bar-custom {
     border-radius: 200px;
-    background-color: transparent;
+    background-color: white;
     border: 1px solid #B2C9AB; 
     height: 38px;
+    margin-right: -1px;
 }
 .search-bar-custom:focus {
     background-color: #d9c98f; 
     box-shadow: none;
 }
+
 .search-button-custom {
     border-radius: 15px;
-    padding: 0.25rem 0.5rem;
-    width: 80px; 
-    height: 38px; 
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #B2C9AB;
-    border: none;
-    color: black; 
-    cursor: pointer;
+    flex-shrink: 0;
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 60px;
+    display: flex;
 }
+
 .search-button-custom:hover {
     background-color: #9EB29F;
     color: white;

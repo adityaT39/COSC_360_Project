@@ -4,11 +4,29 @@
        header("Location:login.php");
        exit();
     }
+
+   include("header.php");
+   include("database.php");
 ?>
 
 <?php
-   include("header.php");
-   include("database.php");
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    $user = $_SESSION['username'];
+    $title = $conn->real_escape_string($_POST['title']);
+    $content = $conn->real_escape_string($_POST['text']);
+    $category = $conn->real_escape_string($_POST['category']);
+
+    $sql = "INSERT INTO posts (user, title, content, category) VALUES (?, ?, ?, ?)";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("ssss", $user, $title, $content, $category);
+
+    if ($stmt->execute()) {
+        echo "New record created successfully";
+    } else {
+        echo "Error: " . $stmt->error;
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -21,8 +39,8 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <link rel="stylesheet" href="CSS/style.css">
       <link rel="stylesheet" href="CSS/header_style.css">
-      <link rel="stylesheet" href="CSS/create_style.css">
       <link rel="stylesheet" href="CSS/contact_form_style.css">
+      <link rel="stylesheet" href="CSS/create_style.css">
       <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"/>
   </head>
   <body>
@@ -30,10 +48,10 @@
       <h1 class="mb-4">Create a Post:</h1>
       <form method="POST" action="create.php" enctype="multipart/form-data">
         <div class="form-group">
-          <input type="text" class="form-control" name="title" placeholder="Title of the Post">
+          <input type="text" id=title-post name="title" placeholder="Title of the Post">
         </div>
         <div class="form-group">
-          <textarea class="form-control" name="text" rows="5" placeholder="text"></textarea>
+          <textarea class="form-control" name="text" rows="8" placeholder="Enter you text here"></textarea>
         </div>
         <div class="form-group">
           <label for="category">Choose a category:</label>
@@ -54,7 +72,8 @@
           <label for="fileInput">Attach a file:</label>
           <input type="file" class="form-control-file" id="fileInput" name="fileInput">
         </div>
-        <button type="submit" class="btn btn-post" name="submit">Post</button>
+        <br>
+        <button type="submit" id="make-post" name="submit">Make Post</button>
       </form>
     </div>
     <?php
@@ -65,26 +84,8 @@
   </body>
 </html>
 
-<?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
-    $user = $_SESSION['username'];
-    $title = $conn->real_escape_string($_POST['title']);
-    $content = $conn->real_escape_string($_POST['text']);
-    $category = $conn->real_escape_string($_POST['category']);
-
-    $sql = "INSERT INTO posts (user, title, content, category) VALUES (?, ?, ?, ?)";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ssss", $user, $title, $content, $category);
-
-    if ($stmt->execute()) {
-        echo "New record created successfully";
-    } else {
-        echo "Error: " . $stmt->error;
-    }
-
-    $stmt->close();
-    $conn->close();
-}
+<?php 
+  $stmt->close();
+  $conn->close();
 ?>
 

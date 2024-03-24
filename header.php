@@ -34,12 +34,12 @@
                     <span class="navbar-text me-3">
                         Welcome, <?= htmlspecialchars($_SESSION['username']); ?>
                     </span>
-                    <div class="nav-search-wrapper">
-                        <input class="form-control search-bar-custom" type="search" placeholder="Search" aria-label="Search">
+                    <form class="d-flex align-items-center" id="search-form" action="search_results.php" method="get">
+                        <input class="form-control me-2 search-bar-custom" name="query" type="search" placeholder="Search" aria-label="Search">
                         <button class="btn search-button-custom" type="submit">
-                            <span class="material-icons">search</span>
+                            <span class="material-icons">Search</span>
                         </button>
-                    </div>
+                    </form>
                     <ul class="navbar-nav">
                         <li class="nav-item">
                             <a class="nav-link nav-link-custom" href="logout.php">Logout</a>
@@ -51,6 +51,7 @@
     </header>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+
+

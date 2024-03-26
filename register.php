@@ -1,6 +1,6 @@
 <?php
-include("database.php");
-include("header_index.php");
+    include("database.php");
+    include("header_index.php");
 ?>
 
 <!DOCTYPE html>
@@ -42,7 +42,7 @@ include("header_index.php");
                             </div>
                             <div class="mb-3">
                                 <label for="profilePicture" class="form-label">Choose Profile Picture</label>
-                                <input type="file" class="form-control" id="profilePicture" name="profile_picture" accept="image/*">
+                                <input type="file" class="form-control" id="profile_picture" name="profile_picture" *accept="image/">
                             </div>
                             <button type="submit" class="btn btn-primary w-100">Submit</button>
                         </form>
@@ -66,12 +66,53 @@ include("header_index.php");
         $username = filter_input(INPUT_POST, "username", FILTER_SANITIZE_SPECIAL_CHARS);
         $email = filter_input(INPUT_POST, "email", FILTER_SANITIZE_SPECIAL_CHARS);
         $password = filter_input(INPUT_POST, "password", FILTER_SANITIZE_SPECIAL_CHARS);
+        $confirm_password = filter_input(INPUT_POST, "confirm_password", FILTER_SANITIZE_SPECIAL_CHARS);
+
+        if ($password !== $confirm_password) {
+            echo "Passwords do not match.";
+            exit;
+        }
 
         $hash = password_hash($password , PASSWORD_DEFAULT);
-        $sql = "INSERT INTO users (user, email, password)
-                VALUES ('$username', '$email', '$hash')";
-        mysqli_query($conn, $sql);
-        echo "You are now registered";
+
+        if (isset($_FILES["profile_picture"]) && $_FILES["profile_picture"]["error"] == 0) {
+            $allowed = ["jpg" => "image/jpeg", "jpeg" => "image/jpeg", "gif" => "image/gif", "png" => "image/png"];
+            $filename = $_FILES["profile_picture"]["name"];
+            $filetype = $_FILES["profile_picture"]["type"];
+            $filesize = $_FILES["profile_picture"]["size"];
+
+            $ext = pathinfo($filename, PATHINFO_EXTENSION);
+            if (!array_key_exists($ext, $allowed)) die("Error: Please select a valid file format.");
+    
+            $maxsize = 5 * 1024 * 1024;
+            if ($filesize > $maxsize) die("Error: File size is larger than the allowed limit of 5MB.");
+    
+            if (in_array($filetype, $allowed)) {
+              
+                $imageContent = file_get_contents($_FILES['profile_picture']['tmp_name']);
+            }
+        }
+
+        $sql = "INSERT INTO users (user, email, password, profile_picture) VALUES (?, ?, ?, ?)";
+
+        if ($stmt = mysqli_prepare($conn, $sql)) {
+         
+            mysqli_stmt_bind_param($stmt, "sssb", $username, $email, $hash, $null);
+           
+            $null = NULL;
+            mysqli_stmt_send_long_data($stmt, 3, $imageContent);
+
+            mysqli_stmt_execute($stmt);
+            if (mysqli_stmt_affected_rows($stmt) > 0) {
+                echo "Account saved and created successfully.";
+            } else {
+                echo "Error: Could not create the account";
+            }
+        } else {
+            echo "Error: " . mysqli_error($conn);
+        }
+    } else {
+        echo "Error: There was a problem uploading your file. Please try again."; 
     }
 
     mysqli_close($conn);

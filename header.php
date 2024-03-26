@@ -1,3 +1,35 @@
+<?php
+    include("database.php");
+
+    $profilePictureSrc = 'Images/aerial-2015.jpg';
+
+    if (isset($_SESSION['username'])) {
+        $username = $_SESSION['username'];
+
+        $sql = "SELECT profile_picture FROM users WHERE user = ?";
+        if ($stmt = mysqli_prepare($conn, $sql)) {
+        
+            mysqli_stmt_bind_param($stmt, "s", $username);
+
+            mysqli_stmt_execute($stmt);
+
+            mysqli_stmt_bind_result($stmt, $profilePictureBlob);
+
+            if (mysqli_stmt_fetch($stmt)) {
+               
+                if ($profilePictureBlob !== null) {
+        
+                    $profilePictureSrc = 'data:image/jpeg;base64,' . base64_encode($profilePictureBlob);
+                }
+            }
+
+            mysqli_stmt_close($stmt);
+        }
+    }
+
+    mysqli_close($conn);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,7 +68,9 @@
                         <a class="nav-link nav-link-custom btn btn-warning" href="admin_login.php">Admin</a>
                         </li>
                     </ul>
-                    <a href="profile.php" class="me-2" role="button"><i class="bi bi-person-fill"></i></a>
+                    <a href="profile.php" class="me-2" role="button">
+                        <img src="<?= htmlspecialchars($profilePictureSrc); ?>" alt="Profile Picture" style="width: 40px; height: 40px; border-radius: 50%;">
+                    </a>
                     <span class="navbar-text me-3">
                         Welcome, <?= htmlspecialchars($_SESSION['username']); ?>
                     </span>

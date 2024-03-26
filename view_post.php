@@ -64,6 +64,11 @@ $comments_result = $comments_stmt->get_result();
             <h1 class="card-title"><?php echo htmlspecialchars($post['title']); ?></h1>
             <h6 class="text-muted card-subtitle mb-2">Posted on: <?php echo date('F j, Y', strtotime($post['created_at'])); ?></h6>
             <p class="card-text"><?php echo nl2br(htmlspecialchars($post['content'])); ?></p>
+            <?php if ($post['image']): ?>
+                <div class="mt-3">
+                    <img src="data:image/jpeg;base64,<?php echo base64_encode($post['image']); ?>" alt="Post Image" style="max-width: 100%; height: auto;">
+                </div>
+            <?php endif; ?>
             <p class="card-text"><small class="text-muted">Category: <?php echo htmlspecialchars($post['category']); ?></small></p>
         </div>
     </div>

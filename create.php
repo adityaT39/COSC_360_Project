@@ -4,29 +4,48 @@
        header("Location:login.php");
        exit();
     }
-
    include("header.php");
    include("database.php");
 ?>
 
 <?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
+  if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $user = $_SESSION['username'];
     $title = $conn->real_escape_string($_POST['title']);
     $content = $conn->real_escape_string($_POST['text']);
     $category = $conn->real_escape_string($_POST['category']);
+    
+    // Handle the image upload
+    if(isset($_FILES["fileInput"]) && $_FILES["fileInput"]["error"] == 0){
+        $allowedTypes = array("jpg" => "image/jpg", "jpeg" => "image/jpeg", "gif" => "image/gif", "png" => "image/png");
+        $fileType = $_FILES["fileInput"]["type"];
+        if(!array_key_exists(pathinfo($_FILES["fileInput"]["name"], PATHINFO_EXTENSION), $allowedTypes) || !in_array($fileType, $allowedTypes)){
+            die("Error: Please select a valid file format.");
+        }
+        
+        $image = file_get_contents($_FILES["fileInput"]["tmp_name"]);
+    } else {
 
-    $sql = "INSERT INTO posts (user, title, content, category) VALUES (?, ?, ?, ?)";
+        $image = NULL;
+    }
+
+    $sql = "INSERT INTO posts (user, title, content, category, image) VALUES (?, ?, ?, ?, ?)";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ssss", $user, $title, $content, $category);
-
+    if(false === $stmt) {
+        die("Error in query preparation: " . $conn->error);
+    }
+    $stmt->bind_param("ssssb", $user, $title, $content, $category, $null);
+    $null = NULL;
+    $stmt->send_long_data(4, $image);
+    
     if ($stmt->execute()) {
-        echo "New record created successfully";
+        echo "New entry record successfull";
     } else {
         echo "Error: " . $stmt->error;
     }
-}
+    
+    $stmt->close();
+  }
 ?>
 
 <!DOCTYPE html>

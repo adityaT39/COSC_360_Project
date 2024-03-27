@@ -3,7 +3,7 @@
     $db_server = "localhost";
     $db_user = "root";
     $db_pass = "";
-    $db_name = "cosc_360_db";
+    $db_name = "db_82056300";
     $conn = "";
     $pdo = new PDO('mysql:host=localhost;dbname=cosc_360_db', 'root', '');
 

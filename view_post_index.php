@@ -56,30 +56,51 @@ $comments_result = $comments_stmt->get_result();
         </div>
     </div>
  
-    <div class="mt-4">
+    <div class="mt-4 comments-section">
         <h3>Comments:</h3>
-        <?php while ($comment = $comments_result->fetch_assoc()): ?>
-            <div class="card mb-3">
-                <div class="card-body">
-                    <h5 class="card-title"><?= htmlspecialchars($comment['username']); ?></h5>
-                    <p class="card-text"><?= nl2br(htmlspecialchars($comment['comment'])); ?></p>
-                    <p class="card-text">
-                        <small class="text-muted">
-                            Posted on <?= date('F j, Y, g:i a', strtotime($comment['created_at'])); ?>
-                        </small>
-                    </p>
-                </div>
-            </div>
-        <?php endwhile; ?>
-        <?php if ($comments_result->num_rows == 0): ?>
-            <p>No comments yet. Be the first to comment!</p>
-        <?php endif; ?>
+        <!-- Comments will be inserted here -->
     </div>
 </div>
 
 <?php include("footer_index.php"); ?>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+        function fetchComments() {
+            const postId = <?php echo json_encode($post_id); ?>;
+            fetch('post_comment.php?post_id=' + postId)
+            .then(response => response.json())
+            .then(comments => {
+                const commentsSection = document.querySelector('.comments-section');
+                commentsSection.innerHTML = '';
+                if (comments.length === 0) {
+                    commentsSection.innerHTML = '<p>No comments yet. Be the first to comment!</p>';
+                } else {
+                    comments.forEach(comment => {
+                        const commentElement = document.createElement('div');
+                        commentElement.classList.add('card', 'mb-3');
+                        commentElement.innerHTML = `
+                            <div class="card-body">
+                                <h5 class="card-title">${comment.username}</h5>
+                                <p class="card-text">${comment.comment}</p>
+                                <p class="card-text">
+                                    <small class="text-muted">
+                                        Posted on ${comment.created_at}
+                                    </small>
+                                </p>
+                            </div>
+                        `;
+                        commentsSection.appendChild(commentElement);
+                    });
+                }
+            })
+            .catch(error => console.error('Error fetching comments:', error));
+        }
+
+        fetchComments();
+
+        setInterval(fetchComments, 3000);
+    </script>
 </body>
 </html>
 

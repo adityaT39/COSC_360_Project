@@ -18,9 +18,16 @@
                 header("Location: admin_index.php");
                 exit();
             } else {
+               
                 $login_error = "Invalid username or password. Debug: Entered password is {$password}, DB password is {$admin['password']}";
             }
         } else {
+            
+
+                $login_error = "Invalid username or password. Debug: Entered password is {$password}, DB password is {$admin['password']}";
+            }
+        } else {
+
             $login_error = "Invalid username or password.";
         }
     }

@@ -6,7 +6,6 @@
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $username = $_POST['username'];
         $password = $_POST['password'];
-
         $query = "SELECT * FROM admin WHERE username = ?";
         $stmt = $conn->prepare($query);
         $stmt->bind_param("s", $username);
@@ -15,7 +14,6 @@
         if ($result->num_rows > 0) {
             $admin = $result->fetch_assoc();
             if ($password == $admin['password']) {
-               
                 $_SESSION['admin_logged_in'] = true;
                 header("Location: admin_index.php");
                 exit();
@@ -25,6 +23,11 @@
             }
         } else {
             
+
+                $login_error = "Invalid username or password. Debug: Entered password is {$password}, DB password is {$admin['password']}";
+            }
+        } else {
+
             $login_error = "Invalid username or password.";
         }
     }

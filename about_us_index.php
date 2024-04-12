@@ -18,7 +18,7 @@
         <div class="row">
             <div class="col-md-4">
                 <h2>Aditya Tripathy</h2>
-                <p>[Description of creator 1]</p>
+                <p>An enthusiastic Computer Science student with a strong foundation in programming. I made this website as a project for my class and to showcase my skills in web programming.</p>
             </div>
             <div class="col-md-4">
                 <h2>João Bolsonaro</h2>
